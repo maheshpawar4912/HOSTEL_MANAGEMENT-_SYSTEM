@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostel Management System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f6fa; }
+    header { background: #2f3d78; color: white; padding: 16px; text-align: center; }
+    main { padding: 24px; }
+    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .card { background: white; border-radius: 8px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    h2 { margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { padding: 10px; border-bottom: 1px solid #e2e4ef; text-align: left; }
+    button, input, select { font-size: 14px; }
+    input, select { width: 100%; padding: 8px; margin: 6px 0 12px; border: 1px solid #d1d4e0; border-radius: 4px; }
+    button { background: #2f3d78; color: white; border: none; padding: 10px 14px; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #1e2a58; }
+    .button-secondary { background: #6c757d; }
+    .button-secondary:hover { background: #565e69; }
+    .status { margin-top: 12px; color: #1a9c8f; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hostel Management System</h1>
+    <p>Manage hostels, rooms, students, and allocations from one interface.</p>
+  </header>
+  <main>
+    <div class="grid">
+      <section class="card">
+        <h2>Hostels</h2>
+        <form id="hostel-form">
+          <input type="hidden" id="hostel-id" />
+          <label>Name</label>
+          <input id="hostel-name" required />
+          <label>Location</label>
+          <input id="hostel-location" required />
+          <label>Capacity</label>
+          <input id="hostel-capacity" type="number" min="1" required />
+          <button type="submit">Save Hostel</button>
+          <button type="button" id="hostel-clear" class="button-secondary">Clear</button>
+        </form>
+        <div id="hostel-status" class="status"></div>
+        <table id="hostel-table"></table>
+      </section>
+      <section class="card">
+        <h2>Rooms</h2>
+        <form id="room-form">
+          <input type="hidden" id="room-id" />
+          <label>Hostel</label>
+          <select id="room-hostel" required></select>
+          <label>Room Number</label>
+          <input id="room-number" required />
+          <label>Type</label>
+          <input id="room-type" required placeholder="Example: Single, Double" />
+          <label>Capacity</label>
+          <input id="room-capacity" type="number" min="1" required />
+          <button type="submit">Save Room</button>
+          <button type="button" id="room-clear" class="button-secondary">Clear</button>
+        </form>
+        <div id="room-status" class="status"></div>
+        <table id="room-table"></table>
+      </section>
+      <section class="card">
+        <h2>Students</h2>
+        <form id="student-form">
+          <label>Name</label>
+          <input id="student-name" required />
+          <label>Roll Number</label>
+          <input id="student-roll" required />
+          <label>Course</label>
+          <input id="student-course" />
+          <label>Phone</label>
+          <input id="student-phone" />
+          <label>Email</label>
+          <input id="student-email" type="email" />
+          <button type="submit">Add Student</button>
+          <button type="button" id="student-clear" class="button-secondary">Clear</button>
+        </form>
+        <div id="student-status" class="status"></div>
+        <table id="student-table"></table>
+      </section>
+      <section class="card">
+        <h2>Allocations</h2>
+        <form id="allocation-form">
+          <label>Student</label>
+          <select id="allocation-student" required></select>
+          <label>Room</label>
+          <select id="allocation-room" required></select>
+          <label>Check-in Date</label>
+          <input id="allocation-checkin" type="date" required />
+          <label>Check-out Date</label>
+          <input id="allocation-checkout" type="date" />
+          <button type="submit">Allocate Room</button>
+          <button type="button" id="allocation-clear" class="button-secondary">Clear</button>
+        </form>
+        <div id="allocation-status" class="status"></div>
+        <table id="allocation-table"></table>
+      </section>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
